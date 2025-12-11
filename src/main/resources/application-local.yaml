@@ -4,5 +4,6 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:mysql://localhost:3306/penjualan?useSSL=false&serverTimezone=Asia/Jakarta
+    url: jdbc:mysql://localhost:3306/penjualan?useSSL=false&serverTimezone=Asia/Jakarta&allowPublicKeyRetrieval=true
     username: root
+    password: password
