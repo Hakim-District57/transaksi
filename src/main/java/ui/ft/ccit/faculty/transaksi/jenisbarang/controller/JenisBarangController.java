@@ -1,6 +1,7 @@
 package ui.ft.ccit.faculty.transaksi.jenisbarang.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,7 +11,10 @@ import ui.ft.ccit.faculty.transaksi.jenisbarang.view.JenisBarangService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jenis-barang")
+@RequestMapping(
+        value = "/api/jenis-barang",
+        produces = MediaType.APPLICATION_JSON_VALUE
+)
 public class JenisBarangController {
 
     private final JenisBarangService service;
@@ -31,20 +35,19 @@ public class JenisBarangController {
         return service.getById(id);
     }
 
-    @GetMapping("/search")
-    @Operation(summary = "Mencari jenis barang berdasarkan nama")
-    public List<JenisBarang> search(@RequestParam String q) {
-        return service.searchByNama(q);
-    }
-
-    @PostMapping
+    @PostMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Menambah jenis barang")
     public JenisBarang create(@RequestBody JenisBarang jenisBarang) {
         return service.save(jenisBarang);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(
+            value = "/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
     @Operation(summary = "Update jenis barang")
     public JenisBarang update(@PathVariable Byte id,
                               @RequestBody JenisBarang jenisBarang) {

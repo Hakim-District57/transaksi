@@ -1,6 +1,7 @@
 package ui.ft.ccit.faculty.transaksi.pelanggan.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "pelanggan")
@@ -13,21 +14,23 @@ public class Pelanggan {
     @Column(name = "nama", length = 255, nullable = false)
     private String nama;
 
-    @Column(name = "alamat", length = 255)
+    @Column(name = "jenis_kelamin", length = 1, nullable = false)
+    private String jenisKelamin;
+
+    @Column(name = "alamat", length = 255, nullable = false)
     private String alamat;
 
     @Column(name = "telepon", length = 20)
     private String telepon;
 
+    @Column(name = "tgl_lahir", nullable = false)
+    private LocalDate tglLahir;
+
+    @Column(name = "jenis_pelanggan", length = 1, nullable = false)
+    private String jenisPelanggan;
+
     protected Pelanggan() {
         // JPA
-    }
-
-    public Pelanggan(String idPelanggan, String nama, String alamat, String telepon) {
-        this.idPelanggan = idPelanggan;
-        this.nama = nama;
-        this.alamat = alamat;
-        this.telepon = telepon;
     }
 
     public String getIdPelanggan() {
@@ -46,6 +49,14 @@ public class Pelanggan {
         this.nama = nama;
     }
 
+    public String getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
     public String getAlamat() {
         return alamat;
     }
@@ -60,5 +71,21 @@ public class Pelanggan {
 
     public void setTelepon(String telepon) {
         this.telepon = telepon;
+    }
+
+    public LocalDate getTglLahir() {
+        return tglLahir;
+    }
+
+    public void setTglLahir(LocalDate tglLahir) {
+        this.tglLahir = tglLahir;
+    }
+
+    public String getJenisPelanggan() {
+        return jenisPelanggan;
+    }
+
+    public void setJenisPelanggan(String jenisPelanggan) {
+        this.jenisPelanggan = jenisPelanggan;
     }
 }

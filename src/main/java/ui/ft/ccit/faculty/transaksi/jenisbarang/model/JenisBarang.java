@@ -7,19 +7,15 @@ import jakarta.persistence.*;
 public class JenisBarang {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_jenis_brg")
     private Byte idJenisBarang;
 
-    @Column(name = "nama", length = 100, nullable = false)
+    @Column(name = "nama_jenis_brg", length = 20, nullable = false)
     private String nama;
 
     protected JenisBarang() {
-        // for JPA
-    }
-
-    public JenisBarang(Byte idJenisBarang, String nama) {
-        this.idJenisBarang = idJenisBarang;
-        this.nama = nama;
+        // JPA
     }
 
     public Byte getIdJenisBarang() {

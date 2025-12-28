@@ -1,6 +1,7 @@
 package ui.ft.ccit.faculty.transaksi.karyawan.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "karyawan")
@@ -10,20 +11,38 @@ public class Karyawan {
     @Column(name = "id_karyawan", length = 4)
     private String idKaryawan;
 
-    @Column(name = "nama", length = 255, nullable = false)
+    @Column(name = "nama", nullable = false, length = 20)
     private String nama;
 
-    @Column(name = "telepon", length = 20)
+    @Column(name = "jenis_kelamin", nullable = false, length = 1)
+    private String jenisKelamin;
+
+    @Column(name = "alamat", nullable = false, length = 50)
+    private String alamat;
+
+    @Column(name = "telepon", length = 15)
     private String telepon;
+
+    @Column(name = "tgl_lahir", nullable = false)
+    private LocalDate tglLahir;
+
+    @Column(name = "gaji", nullable = false)
+    private Double gaji;
 
     protected Karyawan() {
         // JPA
     }
 
-    public Karyawan(String idKaryawan, String nama, String telepon) {
+    public Karyawan(String idKaryawan, String nama, String jenisKelamin,
+                    String alamat, String telepon,
+                    LocalDate tglLahir, Double gaji) {
         this.idKaryawan = idKaryawan;
         this.nama = nama;
+        this.jenisKelamin = jenisKelamin;
+        this.alamat = alamat;
         this.telepon = telepon;
+        this.tglLahir = tglLahir;
+        this.gaji = gaji;
     }
 
     public String getIdKaryawan() {
@@ -42,11 +61,43 @@ public class Karyawan {
         this.nama = nama;
     }
 
+    public String getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
     public String getTelepon() {
         return telepon;
     }
 
     public void setTelepon(String telepon) {
         this.telepon = telepon;
+    }
+
+    public LocalDate getTglLahir() {
+        return tglLahir;
+    }
+
+    public void setTglLahir(LocalDate tglLahir) {
+        this.tglLahir = tglLahir;
+    }
+
+    public Double getGaji() {
+        return gaji;
+    }
+
+    public void setGaji(Double gaji) {
+        this.gaji = gaji;
     }
 }
